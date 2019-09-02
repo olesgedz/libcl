@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cl_krl_build.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olesgedz <olesgedz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:54 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/08/30 23:31:57 by olesgedz         ###   ########.fr       */
+/*   Updated: 2019/09/02 18:35:10 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,29 +43,17 @@ static cl_int
 static void
 	krl_get_opts
 	(t_vect *build_line
-	, char **krlname
 	, char **opts)
 {
-	char	**split;
 
-	split = (char **)VSPLIT(*build_line, ":");
-	*krlname = ft_strdup(split[0]);
-	*opts = ft_strdup(split[1]);
-	free(split[0]);
-	free(split[1]);
-	free(split[2]);
-	free(split);
+	*opts = build_line->data;
 }
-
 static void
 	krl_source_free
 	(t_vect lines
-	, char *krlname
-	, char *opts)
+	)
 {
 	size_t	i;
-	free(krlname);
-	free(opts);
 	i = 0;
 	while (i < lines.used / 8)
 	{
@@ -83,13 +71,12 @@ cl_int
 	, t_vect *build_line, t_vect *kernel_names)
 {
 	char		*krlname;
-	char		*opts;
 	char		buffer[LOG_BUFSIZ];
 	cl_int		ret;
 	t_vect		lines;
 	unsigned char **names;
 	names = VSPLIT(*kernel_names,":");
-	krl_get_opts(build_line, &krlname, &opts);
+	
 	vect_init(&lines);
 	gnl_lines(fd, &lines, GNL_APPEND_CHAR);
 	cl->prog = clCreateProgramWithSource(cl->ctxt, lines.used / sizeof(void *),
@@ -97,7 +84,7 @@ cl_int
 	if (ret != CL_SUCCESS)
 		return (ret);
 	if ((ret = clBuildProgram(cl->prog,
-		cl->dev_num, &cl->dev_id, opts, NULL, NULL)) != CL_SUCCESS)
+		cl->dev_num, &cl->dev_id, build_line->data, NULL, NULL)) != CL_SUCCESS)
 	{
 		clGetProgramBuildInfo(cl->prog, cl->dev_id, CL_PROGRAM_BUILD_LOG
 			, LOG_BUFSIZ, buffer, NULL);
@@ -108,6 +95,6 @@ cl_int
 		return (ret);
 	if (!(krl[1].krl = clCreateKernel(cl->prog, (char *)names[1], &ret)))
 		return (ret);
-	krl_source_free(lines, krlname, opts);
+	krl_source_free(lines);
 	return (krl_set_args(cl->ctxt, &krl[0]) ||krl_set_args(cl->ctxt, &krl[1]));
 }
