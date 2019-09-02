@@ -6,7 +6,7 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:54 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/09/02 18:35:10 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/09/02 20:01:19 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ cl_int
 	char		buffer[LOG_BUFSIZ];
 	cl_int		ret;
 	t_vect		lines;
+	int i;
+	i = -1;
 	unsigned char **names;
 	names = VSPLIT(*kernel_names,":");
 	
@@ -91,10 +93,12 @@ cl_int
 		write(1, buffer, ft_strlen(buffer));
 		return (ret);
 	}
-	if (!(krl[0].krl = clCreateKernel(cl->prog, (char *)names[0], &ret)))
-		return (ret);
-	if (!(krl[1].krl = clCreateKernel(cl->prog, (char *)names[1], &ret)))
-		return (ret);
+	while((char *)names[++i])
+	{
+		if (!(krl[i].krl = clCreateKernel(cl->prog, (char *)names[i], &ret)))
+			return (ret);
+		
+	}
 	krl_source_free(lines);
 	return (krl_set_args(cl->ctxt, &krl[0]) ||krl_set_args(cl->ctxt, &krl[1]));
 }
