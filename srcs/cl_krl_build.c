@@ -6,7 +6,7 @@
 /*   By: olesgedz <olesgedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:54 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/09/04 02:55:43 by olesgedz         ###   ########.fr       */
+/*   Updated: 2019/09/04 03:11:15 by olesgedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static cl_int
 	i = 0;
 	while (i < krl->nargs)
 	{
-		krl->args[i] = clCreateBuffer(ctxt, 0, krl->sizes[i], NULL, &ret);
+		krl->args[i] = clCreateBuffer(ctxt, CL_MEM_READ_WRITE, krl->sizes[i], NULL, &ret);
 		if (ret != CL_SUCCESS)
 			return (ret);
 		if ((ret = CL_KRL_ARG(krl->krl, i, krl->args[i])) != CL_SUCCESS)
@@ -95,8 +95,9 @@ cl_int
 	{
 		if (!(krl[i].krl = clCreateKernel(cl->prog, (char *)names[i], &ret)))
 			return (ret);
-		
 	}
 	krl_source_free(lines);
-	return (krl_set_args(cl->ctxt, &krl[0]) ||krl_set_args(cl->ctxt, &krl[1]));
+	ret = krl_set_args(cl->ctxt, &krl[0]);
+	
+	return (ret);
 }
