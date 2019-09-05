@@ -6,7 +6,7 @@
 #    By: olesgedz <olesgedz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/30 19:39:22 by olesgedz          #+#    #+#              #
-#    Updated: 2019/09/04 02:25:02 by olesgedz         ###   ########.fr        #
+#    Updated: 2019/09/05 23:22:20 by olesgedz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME=libcl.a
 
-CC= gcc
+CC = clang
 
 CFLAGS= -g -Wall -Wextra -Werror
 
