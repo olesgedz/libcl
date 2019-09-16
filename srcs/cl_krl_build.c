@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cl_krl_build.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olesgedz <olesgedz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lminta <lminta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:54 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/09/04 03:11:15 by olesgedz         ###   ########.fr       */
+/*   Updated: 2019/09/16 21:51:32 by lminta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ cl_int
 	i = -1;
 	unsigned char **names;
 	names = VSPLIT(*kernel_names,":");
-	
+
 	vect_init(&lines);
 	gnl_lines(fd, &lines, GNL_APPEND_CHAR);
 	cl->prog = clCreateProgramWithSource(cl->ctxt, lines.used / sizeof(void *),
@@ -84,7 +84,7 @@ cl_int
 	if (ret != CL_SUCCESS)
 		return (ret);
 	if ((ret = clBuildProgram(cl->prog,
-		cl->dev_num, &cl->dev_id, build_line->data, NULL, NULL)) != CL_SUCCESS)
+		cl->dev_num, &cl->dev_id, "-w -I srcs/cl_files/ -I includes/cl_headers/", NULL, NULL)) != CL_SUCCESS)
 	{
 		clGetProgramBuildInfo(cl->prog, cl->dev_id, CL_PROGRAM_BUILD_LOG
 			, LOG_BUFSIZ, buffer, NULL);
@@ -98,6 +98,6 @@ cl_int
 	}
 	krl_source_free(lines);
 	ret = krl_set_args(cl->ctxt, &krl[0]);
-	
+
 	return (ret);
 }
