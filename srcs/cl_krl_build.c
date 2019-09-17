@@ -6,7 +6,7 @@
 /*   By: lminta <lminta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:54 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/09/16 21:51:32 by lminta           ###   ########.fr       */
+/*   Updated: 2019/09/17 15:22:07 by lminta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ cl_int
 	(t_cl_info *cl
 	, t_cl_krl *krl
 	, int fd
-	, t_vect *build_line, t_vect *kernel_names)
+	, char *string, t_vect *kernel_names)
 {
 	char		*krlname;
 	char		buffer[LOG_BUFSIZ];
@@ -84,7 +84,7 @@ cl_int
 	if (ret != CL_SUCCESS)
 		return (ret);
 	if ((ret = clBuildProgram(cl->prog,
-		cl->dev_num, &cl->dev_id, "-w -I srcs/cl_files/ -I includes/cl_headers/", NULL, NULL)) != CL_SUCCESS)
+		cl->dev_num, &cl->dev_id, string, NULL, NULL)) != CL_SUCCESS)
 	{
 		clGetProgramBuildInfo(cl->prog, cl->dev_id, CL_PROGRAM_BUILD_LOG
 			, LOG_BUFSIZ, buffer, NULL);

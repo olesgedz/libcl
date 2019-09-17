@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libcl.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olesgedz <olesgedz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lminta <lminta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:36 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/08/30 23:31:38 by olesgedz         ###   ########.fr       */
+/*   Updated: 2019/09/17 15:21:21 by lminta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct			s_cl_krl
 }						t_cl_krl;
 
 cl_int					cl_krl_build
-	(t_cl_info *cl, t_cl_krl *krl, int fd, t_vect *build_line, t_vect *kernel_names);
+	(t_cl_info *cl, t_cl_krl *krl, int fd, char *string, t_vect *kernel_names);
 cl_int					cl_krl_exec
 	(t_cl_info *cl, cl_kernel krl, cl_uint work_dim, size_t *work_size);
 cl_int					cl_read
