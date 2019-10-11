@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cl_krl_build.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lminta <lminta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:54 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/09/17 15:22:07 by lminta           ###   ########.fr       */
+/*   Updated: 2019/10/11 16:16:05 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,6 @@ cl_int
 	}
 	krl_source_free(lines);
 	ret = krl_set_args(cl->ctxt, &krl[0]);
-
+	ft_2darray_uchar_free(&names);
 	return (ret);
 }
