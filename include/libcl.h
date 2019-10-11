@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libcl.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lminta <lminta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:36 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/09/17 15:21:21 by lminta           ###   ########.fr       */
+/*   Updated: 2019/10/09 18:50:32 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #ifdef __APPLE__
 #include <OpenCL/opencl.h>
 #else
-#include <Cl/cl.h>
+#include <CL/cl.h>
 #endif
 
 # define CL_KRL_ARG(k, i, a) clSetKernelArg(k, i, sizeof(a), (void*)&a)
