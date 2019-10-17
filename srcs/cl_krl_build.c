@@ -6,7 +6,7 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:54 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/10/14 23:07:50 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/10/17 15:27:43 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ cl_int
 	int i;
 	i = -1;
 	unsigned char **names;
-	names = VSPLIT(*kernel_names,":");
+	names = ft_nsplit((*kernel_names).data, (*kernel_names).used, ":", sizeof(":") - 1);
 
 	vect_init(&lines);
 	gnl_lines(fd, &lines, GNL_APPEND_CHAR);
