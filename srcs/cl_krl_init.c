@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   cl_krl_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olesgedz <olesgedz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lminta <lminta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:32:12 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/08/30 23:32:13 by olesgedz         ###   ########.fr       */
+/*   Updated: 2019/10/17 18:08:33 by lminta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "malloc.h"
 #include "libcl.h"

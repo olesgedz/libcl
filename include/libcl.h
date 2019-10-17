@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   libcl.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lminta <lminta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:36 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/10/09 18:50:32 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/10/17 18:04:46 by lminta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef LIBCL_H
 # define LIBCL_H
 
 # include "libvect.h"
-#define CL_SILENCE_DEPRECATION
-#ifdef __APPLE__
-#include <OpenCL/opencl.h>
-#else
-#include <CL/cl.h>
-#endif
+# define CL_SILENCE_DEPRECATION
+# ifdef __APPLE__
+#  include <OpenCL/opencl.h>
+# else
+#  include <CL/cl.h>
+# endif
 
 # define CL_KRL_ARG(k, i, a) clSetKernelArg(k, i, sizeof(a), (void*)&a)
 

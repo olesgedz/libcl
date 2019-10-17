@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cl_krl_build.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lminta <lminta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:54 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/10/17 15:27:43 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/10/17 18:08:58 by lminta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static cl_int
 	i = 0;
 	while (i < krl->nargs)
 	{
-		krl->args[i] = clCreateBuffer(ctxt, CL_MEM_READ_WRITE, krl->sizes[i], NULL, &ret);
+		krl->args[i] = clCreateBuffer(ctxt, CL_MEM_READ_WRITE,
+		krl->sizes[i], NULL, &ret);
 		if (ret != CL_SUCCESS)
 			return (ret);
 		if ((ret = CL_KRL_ARG(krl->krl, i, krl->args[i])) != CL_SUCCESS)
@@ -38,20 +39,15 @@ static cl_int
 	return (CL_SUCCESS);
 }
 
-static void
-	krl_get_opts
-	(t_vect *build_line
-	, char **opts)
+static void	krl_get_opts(t_vect *build_line, char **opts)
 {
-
 	*opts = build_line->data;
 }
-static void
-	krl_source_free
-	(t_vect lines
-	)
+
+static void	krl_source_free(t_vect lines)
 {
 	size_t	i;
+
 	i = 0;
 	while (i < lines.used / 8)
 	{
@@ -61,20 +57,18 @@ static void
 	free(lines.data);
 }
 
-cl_int
-	cl_krl_build
-	(t_cl_info *cl
-	, t_cl_krl *krl
-	, int fd
-	, char *string, t_vect *kernel_names)
+cl_intm	cl_krl_build(t_cl_info *cl, t_cl_krl *krl, int fd,
+char *string, t_vect *kernel_names)
 {
 	char		*krlname;
 	char		buffer[LOG_BUFSIZ];
 	cl_int		ret;
 	t_vect		lines;
 	int i;
+	
 	i = -1;
 	unsigned char **names;
+
 	names = ft_nsplit((*kernel_names).data, (*kernel_names).used, ":", sizeof(":") - 1);
 
 	vect_init(&lines);
@@ -91,7 +85,7 @@ cl_int
 		write(1, buffer, ft_strlen(buffer));
 		return (ret);
 	}
-	while((char *)names[++i])
+	while ((char *)names[++i])
 	{
 		if (!(krl[i].krl = clCreateKernel(cl->prog, (char *)names[i], &ret)))
 			return (ret);
