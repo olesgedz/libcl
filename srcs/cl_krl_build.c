@@ -6,7 +6,7 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:54 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/10/19 17:52:38 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/10/19 22:30:36 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@
 #include <stdio.h>
 #define LOG_BUFSIZ 20480
 
-	cl_int
-	krl_set_args
-	(cl_context ctxt
-	, t_cl_krl *krl)
+cl_int	krl_set_args(cl_context ctxt, t_cl_krl *krl)
 {
 	cl_int		ret;
 	size_t		i;
@@ -32,7 +29,8 @@
 		krl->sizes[i], NULL, &ret);
 		if (ret != CL_SUCCESS)
 			return (ret);
-		if ((ret = clSetKernelArg(krl->krl, i, sizeof(krl->args[i]), (void*)&krl->args[i])) != CL_SUCCESS)
+		if ((ret = clSetKernelArg(krl->krl, i,\
+		sizeof(krl->args[i]), (void*)&krl->args[i])) != CL_SUCCESS)
 			return (ret);
 		i++;
 	}
@@ -68,9 +66,7 @@ char *string, t_vect *kernel_names)
 
 	i = -1;
 	unsigned char **names;
-
 	names = ft_nsplit((*kernel_names).data, (*kernel_names).used, ":", sizeof(":") - 1);
-
 	vect_init(&lines);
 	gnl_lines(fd, &lines, GNL_APPEND_CHAR);
 	cl->prog = clCreateProgramWithSource(cl->ctxt, lines.used / sizeof(void *),
