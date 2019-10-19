@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libcl.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lminta <lminta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:36 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/10/17 18:04:46 by lminta           ###   ########.fr       */
+/*   Updated: 2019/10/19 17:14:58 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct			s_cl_info
 	cl_program			prog;
 	cl_uint				dev_num;
 	cl_int				ret;
+	t_vect 				*krl_names;
 }						t_cl_info;
 
 typedef struct			s_cl_krl
@@ -52,5 +53,5 @@ cl_int					cl_write
 	(t_cl_info *cl, cl_mem mem, size_t size, void *data);
 cl_int					cl_init(t_cl_info *cl);
 void					cl_krl_init(t_cl_krl *krl, size_t nargs);
-
+cl_int 					krl_set_args(cl_context ctxt, t_cl_krl *krl);
 #endif

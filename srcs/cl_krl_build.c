@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cl_krl_build.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lminta <lminta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:54 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/10/17 19:15:45 by lminta           ###   ########.fr       */
+/*   Updated: 2019/10/19 17:52:38 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdio.h>
 #define LOG_BUFSIZ 20480
 
-static cl_int
+	cl_int
 	krl_set_args
 	(cl_context ctxt
 	, t_cl_krl *krl)
@@ -32,7 +32,7 @@ static cl_int
 		krl->sizes[i], NULL, &ret);
 		if (ret != CL_SUCCESS)
 			return (ret);
-		if ((ret = CL_KRL_ARG(krl->krl, i, krl->args[i])) != CL_SUCCESS)
+		if ((ret = clSetKernelArg(krl->krl, i, sizeof(krl->args[i]), (void*)&krl->args[i])) != CL_SUCCESS)
 			return (ret);
 		i++;
 	}
@@ -91,7 +91,6 @@ char *string, t_vect *kernel_names)
 			return (ret);
 	}
 	krl_source_free(lines);
-	ret = krl_set_args(cl->ctxt, &krl[0]);
 	ft_2darray_uchar_free(&names);
 	return (ret);
 }
