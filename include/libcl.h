@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   libcl.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: olesgedz <olesgedz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:36 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/10/19 17:14:58 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/10/20 19:04:49 by olesgedz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBCL_H
 # define LIBCL_H
-
+#include "libft.h"
 # include "libvect.h"
 # define CL_SILENCE_DEPRECATION
 # ifdef __APPLE__
