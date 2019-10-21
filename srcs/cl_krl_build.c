@@ -6,7 +6,7 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:54 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/10/19 22:30:36 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/10/21 12:54:54 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ char *string, t_vect *kernel_names)
 	char		buffer[LOG_BUFSIZ];
 	cl_int		ret;
 	t_vect		lines;
+	unsigned char **names;
 	int i;
 
 	i = -1;
-	unsigned char **names;
 	names = ft_nsplit((*kernel_names).data, (*kernel_names).used, ":", sizeof(":") - 1);
 	vect_init(&lines);
 	gnl_lines(fd, &lines, GNL_APPEND_CHAR);
