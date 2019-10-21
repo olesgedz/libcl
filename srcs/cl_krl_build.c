@@ -6,7 +6,7 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:54 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/10/21 12:54:54 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/10/21 14:32:14 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ cl_int	krl_set_args(cl_context ctxt, t_cl_krl *krl)
 	i = 0;
 	while (i < krl->nargs)
 	{
+		if (krl->sizes[i] == 0)
+		{
+			i++;
+			continue;
+		}
 		krl->args[i] = clCreateBuffer(ctxt, CL_MEM_READ_WRITE,
 		krl->sizes[i], NULL, &ret);
 		if (ret != CL_SUCCESS)
