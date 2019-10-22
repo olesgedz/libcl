@@ -6,7 +6,7 @@
 #    By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/30 19:39:22 by olesgedz          #+#    #+#              #
-#    Updated: 2019/10/21 13:23:45 by jblack-b         ###   ########.fr        #
+#    Updated: 2019/10/22 18:13:37 by jblack-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,7 @@ HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = srcs/
 
-SOURCES_LIST= cl_init.c   cl_krl_build.c cl_krl_exec.c  cl_krl_init.c  cl_read.c cl_write.c
-
+SOURCES_LIST= cl_init.c cl_krl_build.c cl_krl_exec.c  cl_krl_init.c  cl_read.c cl_write.c cl_prog_build.c
 
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 

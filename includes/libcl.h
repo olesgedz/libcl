@@ -6,7 +6,7 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:36 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/10/19 17:14:58 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/10/22 18:26:21 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 #  include <CL/cl.h>
 # endif
 
-# define CL_KRL_ARG(k, i, a) clSetKernelArg(k, i, sizeof(a), (void*)&a)
-
 typedef struct			s_cl_info
 {
 	cl_platform_id		pl_id;
@@ -32,7 +30,7 @@ typedef struct			s_cl_info
 	cl_program			prog;
 	cl_uint				dev_num;
 	cl_int				ret;
-	t_vect 				*krl_names;
+	t_vect				*krl_names;
 }						t_cl_info;
 
 typedef struct			s_cl_krl
@@ -43,8 +41,8 @@ typedef struct			s_cl_krl
 	size_t				nargs;
 }						t_cl_krl;
 
-cl_int					cl_krl_build
-	(t_cl_info *cl, t_cl_krl *krl, int fd, char *string, t_vect *kernel_names);
+cl_int					cl_prog_build(t_cl_info *cl, t_cl_krl *krl, int fd,
+	char *string);
 cl_int					cl_krl_exec
 	(t_cl_info *cl, cl_kernel krl, cl_uint work_dim, size_t *work_size);
 cl_int					cl_read
@@ -53,5 +51,7 @@ cl_int					cl_write
 	(t_cl_info *cl, cl_mem mem, size_t size, void *data);
 cl_int					cl_init(t_cl_info *cl);
 void					cl_krl_init(t_cl_krl *krl, size_t nargs);
-cl_int 					krl_set_args(cl_context ctxt, t_cl_krl *krl);
+cl_int					krl_set_args(cl_context ctxt, t_cl_krl *krl);
+cl_int					cl_krl_build(t_cl_info *cl,\
+	t_cl_krl *krl, t_vect *kernel_names);
 #endif
