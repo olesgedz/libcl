@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: olesgedz <olesgedz@student.42.fr>          +#+  +:+       +#+         #
+#    By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/30 19:39:22 by olesgedz          #+#    #+#              #
-#    Updated: 2019/09/05 23:22:20 by olesgedz         ###   ########.fr        #
+#    Updated: 2019/10/22 18:13:37 by jblack-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,19 +20,18 @@ CFLAGS= -g -Wall -Wextra -Werror
 
 SDL_HEADERS = include/
 LIBFT_HEADERS = ../libft/includes/
-LIBVECT_HEADERS = ../libvect/include/
-LIBGNL_HEADERS = ../libgnl/include/
+LIBVECT_HEADERS = ../libvect/includes/
+LIBGNL_HEADERS = ../libgnl/includes/
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(LIBVECT_HEADERS) -I$(LIBGNL_HEADERS)
 HEADERS_LIST =libcl.h 
 
 DIRECTORY =  $(shell pwd)
-HEADERS_DIRECTORY = include/
+HEADERS_DIRECTORY = includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = srcs/
 
-SOURCES_LIST= cl_init.c   cl_krl_build.c cl_krl_exec.c  cl_krl_init.c  cl_read.c cl_write.c
-
+SOURCES_LIST= cl_init.c cl_krl_build.c cl_krl_exec.c  cl_krl_init.c  cl_read.c cl_write.c cl_prog_build.c
 
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
