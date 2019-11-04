@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libcl.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: olesgedz <olesgedz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:36 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/10/24 01:02:43 by olesgedz         ###   ########.fr       */
+/*   Updated: 2019/11/04 20:17:59 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,26 @@
 #  include <CL/cl.h>
 # endif
 
+
+
+
+typedef struct			s_cl_krl
+{
+	cl_kernel			krl;
+	char				 *name;
+	cl_mem				*args;
+	size_t				*sizes;
+	size_t				nargs;
+}						t_cl_krl;
+
+typedef struct        s_cl_program
+{
+	char				*sources;
+	char				*flags;
+	cl_program			prog;
+	t_vect				*t_cl_krl;
+}  t_cl_program;
+
 typedef struct			s_cl_info
 {
 	cl_platform_id		pl_id;
@@ -28,18 +48,10 @@ typedef struct			s_cl_info
 	cl_context			ctxt;
 	cl_command_queue	cmd_queue;
 	cl_program			prog;
+	t_vect				*programs;
 	cl_uint				dev_num;
 	cl_int				ret;
-	t_vect				*krl_names;
 }						t_cl_info;
-
-typedef struct			s_cl_krl
-{
-	cl_kernel			krl;
-	cl_mem				*args;
-	size_t				*sizes;
-	size_t				nargs;
-}						t_cl_krl;
 
 cl_int					cl_prog_build(t_cl_info *cl, t_cl_krl *krl, int fd,
 	char *string);
