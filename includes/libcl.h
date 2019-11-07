@@ -6,7 +6,7 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:36 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/11/04 20:17:59 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/11/05 15:52:51 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct        s_cl_program
 	char				*sources;
 	char				*flags;
 	cl_program			prog;
-	t_vect				*t_cl_krl;
+	t_vect				*krls;
 }  t_cl_program;
 
 typedef struct			s_cl_info

@@ -6,7 +6,7 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:54 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/11/04 20:24:46 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:45:35 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char *string)
 	cl_int		ret;
 	t_vect		lines;
 
-	vect_init(&lines);
+	vect_init(&lines, sizeof(char *));
 	gnl_lines(fd, &lines, GNL_APPEND_CHAR);
 	cl->prog = clCreateProgramWithSource(cl->ctxt, lines.used / sizeof(void *),
 		(const char **)lines.data, NULL, &ret);
