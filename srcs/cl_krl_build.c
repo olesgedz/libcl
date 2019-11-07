@@ -30,6 +30,6 @@ cl_int				cl_krl_build(t_cl_info *cl,\
 		if (!(krl[i].krl = clCreateKernel(cl->prog, (char *)names[i], &ret)))
 			return (ret);
 	}
-	ft_2darray_uchar_free(&names);
+	//ft_2darray_uchar_free(&names);
 	return (ret);
 }
