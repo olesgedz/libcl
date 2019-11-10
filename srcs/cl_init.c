@@ -6,7 +6,7 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 17:17:15 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/10/22 17:53:53 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/11/08 18:20:23 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ cl_int
 	(t_cl_info *cl)
 {
 	cl_int	ret;
-
+	cl->n_progs = 0; 
 	if ((ret = clGetPlatformIDs(1, &cl->pl_id, NULL)) != CL_SUCCESS)
 		return (ret);
 	if ((ret = clGetDeviceIDs(cl->pl_id
