@@ -6,7 +6,7 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:36 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/11/10 17:14:55 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/11/15 17:57:44 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # else
 #  include <CL/cl.h>
 # endif
+#define LOG_BUFSIZ 20480
 
 
 typedef struct			s_cl_krl
@@ -55,17 +56,25 @@ typedef struct			s_cl_info
 	cl_int				ret;
 }	t_cl_info;
 
-cl_int					cl_prog_build(t_cl_info *cl, t_cl_krl *krl, int fd,
-	char *string);
+cl_int					cl_write
+	(t_cl_info *cl, cl_mem mem, size_t size, void *data);
+void					cl_krl_init(t_cl_krl *krl, size_t nargs);
+cl_int					cl_init(t_cl_info *cl);
+cl_int		cl_program_new_push(t_cl_info *cl, char *name);
 cl_int					cl_krl_exec
 	(t_cl_info *cl, cl_kernel krl, cl_uint work_dim, size_t *work_size);
 cl_int					cl_read
 	(t_cl_info *cl, cl_mem mem, size_t size, void *data);
-cl_int					cl_write
-	(t_cl_info *cl, cl_mem mem, size_t size, void *data);
-cl_int					cl_init(t_cl_info *cl);
-void					cl_krl_init(t_cl_krl *krl, size_t nargs);
-cl_int					krl_set_args(cl_context ctxt, t_cl_krl *krl);
-cl_int					cl_krl_build(t_cl_info *cl,\
-	t_cl_krl *krl, t_vect *kernel_names);
+t_cl_prog *cl_program_get_by_name(t_cl_info *cl, char *name);
+cl_int		cl_program_new_push(t_cl_info *cl, char *name);
+cl_int cl_program_init_sources(t_cl_prog *program, char *sources);
+cl_int cl_program_init_flags(t_cl_prog *program, char *flags);
+void cl_program_build_inf(t_cl_info *cl, t_cl_prog * prog);
+cl_int			cl_prog_build(t_cl_info *cl, t_cl_prog *prog);
+cl_int		cl_krl_new_push(t_cl_prog *prog, char *name);
+cl_int  cl_krl_init_arg(t_cl_krl *krl, cl_uint arg_index, size_t arg_size,  void *arg_value);
+cl_int  cl_krl_mem_create(t_cl_info *cl, t_cl_krl *krl,\
+ cl_uint arg_index, cl_mem_flags FLAG);
+cl_int cl_krl_set_arg (t_cl_krl * krl, int index);
+cl_int				cl_krl_create(t_cl_info *cl, t_cl_prog *prog, t_cl_krl *krl);
 #endif
