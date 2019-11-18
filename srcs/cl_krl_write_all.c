@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cl_krl_set_arg.c                                   :+:      :+:    :+:   */
+/*   cl_krl_write_all.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/15 17:56:42 by jblack-b          #+#    #+#             */
-/*   Updated: 2019/11/18 10:14:37 by jblack-b         ###   ########.fr       */
+/*   Created: 2019/11/18 10:19:25 by jblack-b          #+#    #+#             */
+/*   Updated: 2019/11/18 10:19:44 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libcl.h"
 
-cl_int cl_krl_set_arg (t_cl_krl * krl, int index)
+cl_int  cl_krl_write_all(t_cl_info *cl, t_cl_krl *krl)
 {
-	int ret;
-	if (krl->sizes[index])
+	cl_int	ret;
+	int		i;
+
+	ret = 0;
+	i = 0;
+	while (i < krl->nargs)
 	{
-		if (krl->args[index] == NULL)
-			ret = clSetKernelArg(krl->krl, index,\
-			krl->sizes[index], (void*)krl->cpu_srcs[index]);
-		else
-		ret = clSetKernelArg(krl->krl, index,\
-			sizeof(cl_mem), (void*)&krl->args[index]);
+		if (krl->args[i] != NULL)
+			ret = cl_write(cl, krl->args[i],\
+			krl->sizes[i], krl->cpu_srcs[i]);
+		i++;
 	}
-	else
-	{
-		ret = clSetKernelArg(krl->krl, index,\
-			sizeof(cl_mem), NULL);
-	} 
-	return (ret);	
+	return (ret);
 }

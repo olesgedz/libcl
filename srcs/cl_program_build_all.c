@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cl_krl_set_arg.c                                   :+:      :+:    :+:   */
+/*   cl_program_build_all.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/15 17:56:42 by jblack-b          #+#    #+#             */
-/*   Updated: 2019/11/18 10:14:37 by jblack-b         ###   ########.fr       */
+/*   Created: 2019/11/18 10:17:56 by jblack-b          #+#    #+#             */
+/*   Updated: 2019/11/18 10:18:25 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libcl.h"
 
-cl_int cl_krl_set_arg (t_cl_krl * krl, int index)
+cl_int	cl_program_build_all(t_cl_info *cl)
 {
-	int ret;
-	if (krl->sizes[index])
-	{
-		if (krl->args[index] == NULL)
-			ret = clSetKernelArg(krl->krl, index,\
-			krl->sizes[index], (void*)krl->cpu_srcs[index]);
-		else
-		ret = clSetKernelArg(krl->krl, index,\
-			sizeof(cl_mem), (void*)&krl->args[index]);
-	}
-	else
-	{
-		ret = clSetKernelArg(krl->krl, index,\
-			sizeof(cl_mem), NULL);
-	} 
-	return (ret);	
+	cl_int	ret;
+	int		i;
+
+	i = 0;
+	while (i < cl->n_progs)
+		ret = cl_prog_build(cl, &cl->progs[i++]);
+	return (ret);
 }
