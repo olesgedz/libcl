@@ -14,8 +14,8 @@
 
 cl_int		cl_krl_new_push(t_cl_prog *prog, char *name)
 {
-	prog->krls = ft_realloc(prog->krls, sizeof(t_cl_krl));
 	prog->n_krls++;
+	prog->krls = ft_realloc(prog->krls, sizeof(t_cl_krl) * prog->n_krls);
 	prog->krls[prog->n_krls - 1].name = ft_strdup(name);
 	return (0);
 }

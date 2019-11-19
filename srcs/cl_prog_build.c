@@ -12,6 +12,7 @@
 
 #include "libcl.h"
 #include "libgnl.h"
+#include <fcntl.h>
 
 cl_int			cl_prog_build(t_cl_info *cl, t_cl_prog *prog)
 {

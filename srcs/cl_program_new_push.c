@@ -13,9 +13,9 @@
 #include "libcl.h"
 
 cl_int		cl_program_new_push(t_cl_info *cl, char *name)
-{
-	cl->progs = ft_realloc(cl->progs, sizeof(t_cl_prog));
+{	
 	cl->n_progs++;
+	cl->progs = ft_realloc(cl->progs, sizeof(t_cl_prog) * cl->n_progs);
 	cl->progs[cl->n_progs - 1].name = ft_strdup(name);
 	cl->progs[cl->n_progs - 1].krls = 0;
 	cl->progs[cl->n_progs - 1].n_krls = 0;
