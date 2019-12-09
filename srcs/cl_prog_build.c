@@ -6,13 +6,27 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 17:49:37 by jblack-b          #+#    #+#             */
-/*   Updated: 2019/11/15 17:50:16 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/12/09 20:04:35 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libcl.h"
 #include "libgnl.h"
 #include <fcntl.h>
+
+
+static void	prog_source_free(t_vect *lines)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < lines->used / 8)
+	{
+		free(((char **)lines->data)[i]);
+		i++;
+	}
+	free(lines->data);
+}
 
 cl_int			cl_prog_build(t_cl_info *cl, t_cl_prog *prog)
 {
@@ -35,6 +49,7 @@ cl_int			cl_prog_build(t_cl_info *cl, t_cl_prog *prog)
 		cl_program_build_inf(cl, prog);
 		return (ret);
 	}
-	vect_del(lines);
+	prog_source_free(lines);
+	ft_memdel((void**)&lines);
 	return (ret);
 }
