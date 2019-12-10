@@ -6,7 +6,7 @@
 #    By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/30 19:39:22 by olesgedz          #+#    #+#              #
-#    Updated: 2019/11/18 10:20:25 by jblack-b         ###   ########.fr        #
+#    Updated: 2019/12/10 16:22:23 by jblack-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ SOURCES_LIST= cl_init.c cl_program_new_push.c cl_krl_init.c cl_krl_exec.c cl_rea
 			cl_program_init_flags.c cl_program_build_inf.c\
 			cl_prog_build.c cl_krl_new_push.c cl_krl_init_arg.c\
 			cl_krl_mem_create.c cl_krl_set_arg.c cl_krl_create.c\
-			cl_krl_set_all_args.c cl_program_build_all.c cl_krl_write_all.c
+			cl_krl_set_all_args.c cl_program_build_all.c cl_krl_write_all.c cl_krl_mem_release.c\
+			cl_krl_mem_release_all.c
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
 OBJECTS_DIRECTORY = objects/

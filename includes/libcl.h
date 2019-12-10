@@ -6,7 +6,7 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:31:36 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/11/18 10:19:52 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/12/10 16:21:36 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,8 @@ cl_int					cl_krl_create(t_cl_info *cl, t_cl_prog *prog, t_cl_krl *krl);
 cl_int					cl_krl_set_all_args(t_cl_krl *krl);
 cl_int					cl_program_build_all(t_cl_info *cl);
 cl_int					cl_krl_write_all(t_cl_info *cl, t_cl_krl *krl);
+cl_int					cl_krl_mem_release(t_cl_info *cl, t_cl_krl *krl,\
+	cl_uint arg_index);
+cl_int					cl_krl_mem_release_all(t_cl_info *cl, t_cl_krl *krl);
 
 #endif
