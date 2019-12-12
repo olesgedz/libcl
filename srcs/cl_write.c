@@ -6,7 +6,7 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 23:32:26 by olesgedz          #+#    #+#             */
-/*   Updated: 2019/11/18 10:00:03 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/12/12 19:02:50 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ cl_int
 	, void *data)
 {
 	if (size == 0)
-		return(0);
+		return (0);
 	return (clEnqueueWriteBuffer(cl->cmd_queue
 		, mem
 		, CL_TRUE

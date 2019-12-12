@@ -6,13 +6,13 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 10:19:25 by jblack-b          #+#    #+#             */
-/*   Updated: 2019/11/18 10:19:44 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/12/12 18:59:47 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libcl.h"
 
-cl_int  cl_krl_write_all(t_cl_info *cl, t_cl_krl *krl)
+cl_int	cl_krl_write_all(t_cl_info *cl, t_cl_krl *krl)
 {
 	cl_int	ret;
 	int		i;
