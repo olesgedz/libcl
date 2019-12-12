@@ -6,7 +6,7 @@
 /*   By: jblack-b <jblack-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 17:49:37 by jblack-b          #+#    #+#             */
-/*   Updated: 2019/12/12 18:59:53 by jblack-b         ###   ########.fr       */
+/*   Updated: 2019/12/12 19:03:45 by jblack-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libgnl.h"
 #include <fcntl.h>
 
-static void	prog_source_free(t_vect *lines)
+static void		prog_source_free(t_vect *lines)
 {
 	size_t	i;
 
